@@ -531,3 +531,152 @@ document.addEventListener(
 
     }
 );
+// ===============================
+// JOB MANAGEMENT
+// ===============================
+
+async function loadJobs() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:8080/api/jobs"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load jobs");
+        }
+
+        const jobs = await response.json();
+
+        const container =
+            document.getElementById("jobs-container");
+
+        container.innerHTML = "";
+
+        jobs.forEach(function (job) {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "application-card";
+
+            card.innerHTML = `
+    <h3>${job.title}</h3>
+
+    <p>
+        <strong>Company:</strong>
+        ${job.company}
+    </p>
+
+    <p>
+        <strong>Location:</strong>
+        ${job.location}
+    </p>
+
+    <p>
+        <strong>Salary:</strong>
+        ${job.salary}
+    </p>
+
+    <p>
+        <strong>Skills:</strong>
+        ${job.skills}
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        ${job.description}
+    </p>
+
+    <button onclick="deleteJob(${job.id})">
+        Delete Job
+    </button>
+`;
+
+            container.appendChild(card);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("jobs-container").innerHTML =
+            "<p>Unable to load jobs.</p>";
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    loadJobs();
+
+});
+document.getElementById("add-job-button")
+    .addEventListener("click", async function () {
+
+        const job = {
+
+            title: document.getElementById("job-title").value,
+
+            company: document.getElementById("job-company").value,
+
+            location: document.getElementById("job-location").value,
+
+            salary: document.getElementById("job-salary").value,
+
+            skills: document.getElementById("job-skills").value,
+
+            description:
+                document.getElementById("job-description").value
+        };
+
+        if (!job.title ||
+            !job.company ||
+            !job.location ||
+            !job.salary) {
+
+            alert("Please fill all required fields.");
+
+            return;
+        }
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:8080/api/jobs",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(job)
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Failed to add job");
+            }
+
+            alert("Job added successfully!");
+
+            document.getElementById("job-title").value = "";
+            document.getElementById("job-company").value = "";
+            document.getElementById("job-location").value = "";
+            document.getElementById("job-salary").value = "";
+            document.getElementById("job-skills").value = "";
+            document.getElementById("job-description").value = "";
+
+            loadJobs();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Unable to add job.");
+        }
+
+    });

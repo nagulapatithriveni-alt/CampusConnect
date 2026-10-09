@@ -589,9 +589,13 @@ async function loadJobs() {
         ${job.description}
     </p>
 
-    <button onclick="deleteJob(${job.id})">
-        Delete Job
-    </button>
+   <button onclick="editJob(${job.id})">
+    Edit Job
+</button>
+
+<button onclick="deleteJob(${job.id})">
+    Delete Job
+</button>
 `;
 
             container.appendChild(card);
@@ -677,6 +681,132 @@ document.getElementById("add-job-button")
             console.error(error);
 
             alert("Unable to add job.");
+        }
+
+    });
+    async function editJob(jobId) {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:8080/api/jobs/" + jobId
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load job");
+        }
+
+        const job = await response.json();
+        editingJobId = jobId;
+
+document.getElementById("update-job-button")
+    .style.display = "inline-block";
+
+document.getElementById("add-job-button")
+    .style.display = "none";
+
+        document.getElementById("job-title").value =
+            job.title;
+
+        document.getElementById("job-company").value =
+            job.company;
+
+        document.getElementById("job-location").value =
+            job.location;
+
+        document.getElementById("job-salary").value =
+            job.salary;
+
+        document.getElementById("job-skills").value =
+            job.skills;
+
+        document.getElementById("job-description").value =
+            job.description;
+
+        alert("Job loaded into the form. Edit the details and save.");
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Unable to load job.");
+    }
+}
+let editingJobId = null;
+
+
+document.getElementById("update-job-button")
+    .addEventListener("click", async function () {
+
+        if (!editingJobId) {
+            alert("Please select a job to edit.");
+            return;
+        }
+
+        const updatedJob = {
+
+            title:
+                document.getElementById("job-title").value,
+
+            company:
+                document.getElementById("job-company").value,
+
+            location:
+                document.getElementById("job-location").value,
+
+            salary:
+                document.getElementById("job-salary").value,
+
+            skills:
+                document.getElementById("job-skills").value,
+
+            description:
+                document.getElementById("job-description").value
+        };
+
+        try {
+
+            const response = await fetch(
+                "http://localhost:8080/api/jobs/" + editingJobId,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(updatedJob)
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Failed to update job");
+            }
+
+            alert("Job updated successfully!");
+
+            editingJobId = null;
+
+            document.getElementById("update-job-button")
+                .style.display = "none";
+
+            document.getElementById("add-job-button")
+                .style.display = "inline-block";
+
+            document.getElementById("job-title").value = "";
+            document.getElementById("job-company").value = "";
+            document.getElementById("job-location").value = "";
+            document.getElementById("job-salary").value = "";
+            document.getElementById("job-skills").value = "";
+            document.getElementById("job-description").value = "";
+
+            loadJobs();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Unable to update job.");
         }
 
     });

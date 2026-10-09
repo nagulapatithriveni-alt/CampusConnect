@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusConnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        CampusConnect
+    </div>
+
+    <div class="menu">
+
+        <a href="#home">Home</a>
+        <a href="#jobs">Jobs</a>
+        <a href="#my-applications">My Applications</a>
+
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="employer.html">Employer</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <h1>Find Your Dream Job</h1>
+
+    <p>
+        Discover opportunities, build your career,
+        and connect with top companies.
+    </p>
+
+    <button onclick="scrollToJobs()">
+        Search Jobs
+    </button>
+
+</section>
+
+
+<!-- ================= JOBS ================= -->
+
+<section class="jobs" id="jobs">
+
+    <h2>Available Jobs</h2>
+
+    <div class="job-filter">
+
+        <label for="jobFilter">
+            Filter Jobs:
+        </label>
+
+        <select id="jobFilter" onchange="filterJobs()">
+
+            <option value="all">
+                All Jobs
+            </option>
+
+            <option value="java">
+                Java Developer
+            </option>
+
+            <option value="frontend">
+                Frontend Developer
+            </option>
+
+            <option value="python">
+                Python Developer
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="job-container" id="job-container">
+
+        <div class="job-card" data-job-type="java">
+
+            <h3>Java Developer</h3>
+
+            <p>ABC Technologies</p>
+            <p>Chennai</p>
+            <p>₹5 - 8 LPA</p>
+
+            <button onclick="viewJob(1)">
+                View Job
+            </button>
+
+        </div>
+
+
+        <div class="job-card" data-job-type="frontend">
+
+            <h3>Frontend Developer</h3>
+
+            <p>Tech Solutions</p>
+            <p>Bangalore</p>
+            <p>₹4 - 7 LPA</p>
+
+            <button onclick="viewJob(2)">
+                View Job
+            </button>
+
+        </div>
+
+
+        <div class="job-card" data-job-type="python">
+
+            <h3>Python Developer</h3>
+
+            <p>Digital Works</p>
+            <p>Hyderabad</p>
+            <p>₹5 - 9 LPA</p>
+
+            <button onclick="viewJob(3)">
+                View Job
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <p id="no-jobs-message">
+        No jobs found.
+    </p>
+
+</section>
+
+
+<!-- ================= JOB DETAILS ================= -->
+
+<section id="job-details" class="job-details">
+
+    <h2>Job Details</h2>
+
+    <h3 id="job-title"></h3>
+
+    <p id="job-company"></p>
+    <p id="job-location"></p>
+    <p id="job-salary"></p>
+    <p id="job-skills"></p>
+
+    <button onclick="showApplicationForm()">
+        Apply Now
+    </button>
+
+</section>
+
+
+<!-- ================= APPLICATION FORM ================= -->
+
+<section id="application-form" class="application-form">
+
+    <h2>Apply for This Job</h2>
+
+    <form onsubmit="submitApplication(event)">
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            id="applicant-name"
+            required
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="applicant-email"
+            required
+        >
+
+
+        <label>Phone</label>
+
+        <input
+            type="tel"
+            id="applicant-phone"
+            required
+        >
+
+
+        <label>Resume</label>
+
+        <input
+            type="file"
+            id="applicant-resume"
+            required
+        >
+
+
+        <button type="submit">
+            Submit Application
+        </button>
+
+    </form>
+
+    <p id="success-message"></p>
+
+</section>
+
+
+<!-- ================= MY APPLICATIONS ================= -->
+
+<section id="my-applications">
+
+    <h2>My Applications</h2>
+
+    <button onclick="loadMyApplications()">
+        View My Applications
+    </button>
+
+    <div id="applications-list">
+
+        <p>
+            Click the button to view your applications.
+        </p>
+
+    </div>
+
+</section>
+
+
+<script src="script.js"></script>
+<script src="applications.js"></script>
+
+</body>
+
+</html>

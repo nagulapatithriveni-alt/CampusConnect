@@ -1,0 +1,243 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: white;
+}
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+
+button {
+    padding: 12px 25px;
+    margin: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #1e3a8a;
+    color: white;
+}
+
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+
+.hero h1 {
+    font-size: 50px;
+    color: green;
+}
+
+
+.hero p {
+    font-size: 20px;
+}
+
+
+.jobs {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+
+.jobs h2 {
+    font-size: 32px;
+}
+
+
+.job-filter {
+    margin: 20px;
+}
+
+
+.job-filter select,
+.filters select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+
+.job-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+
+.job-card {
+    background: white;
+    width: 280px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.job-card h3 {
+    font-size: 22px;
+}
+
+
+.job-details {
+    display: none;
+    width: 500px;
+    max-width: 90%;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.application-form,
+.login-section {
+    width: 500px;
+    max-width: 90%;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.application-form form,
+.login-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.application-form input,
+.login-section input {
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+
+#success-message,
+#login-message,
+#register-message {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+
+#my-applications {
+    padding: 50px;
+    text-align: center;
+}
+
+
+.application-card {
+    background: white;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 900px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+}
+
+
+.application-status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+.status-applied {
+    color: #856404;
+    background: #fff3cd;
+}
+
+
+.status-shortlisted {
+    color: #004085;
+    background: #cce5ff;
+}
+
+
+.status-selected {
+    color: #155724;
+    background: #d4edda;
+}
+
+
+.status-rejected {
+    color: #721c24;
+    background: #f8d7da;
+}
+
+
+.employer-dashboard {
+    padding: 40px;
+    text-align: center;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 25px;
+}
+
+
+.resume-buttons {
+    margin-top: 15px;
+}
+
+
+.error-message {
+    color: red;
+}
+
+
+#no-jobs-message {
+    display: none;
+}

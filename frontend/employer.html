@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CampusConnect - Employer</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+<nav>
+
+    <div class="logo">
+        CampusConnect
+    </div>
+
+    <div class="menu">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="login.html">
+            Student Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<section class="employer-dashboard">
+
+    <h1>
+        Employer Dashboard
+    </h1>
+
+    <p>
+        Welcome to the CampusConnect Employer Portal.
+    </p>
+
+
+    <h2>
+        Applications
+    </h2>
+
+
+    <!-- LOAD APPLICATIONS -->
+
+    <button
+        type="button"
+        id="load-button"
+    >
+        View Applications
+    </button>
+
+
+    <!-- APPLICATION COUNT -->
+
+    <p id="application-count">
+        Applications: 0
+    </p>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <select id="job-filter">
+
+            <option value="all">
+                All Jobs
+            </option>
+
+            <option value="1">
+                Java Developer
+            </option>
+
+            <option value="2">
+                Frontend Developer
+            </option>
+
+            <option value="3">
+                Python Developer
+            </option>
+
+        </select>
+
+
+        <select id="status-filter">
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="Applied">
+                Applied
+            </option>
+
+            <option value="Shortlisted">
+                Shortlisted
+            </option>
+
+            <option value="Selected">
+                Selected
+            </option>
+
+            <option value="Rejected">
+                Rejected
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- APPLICATIONS WILL APPEAR HERE -->
+
+    <div id="employer-applications">
+
+        <p>
+            Click "View Applications" to load applications.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- IMPORTANT -->
+
+<script src="employer.js"></script>
+
+</body>
+
+</html>

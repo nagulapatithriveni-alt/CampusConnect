@@ -1,0 +1,12 @@
+backend/target/
+backend/uploads/
+backend/src/main/resources/application.properties
+
+.idea/
+.vscode/
+*.iml
+
+.DS_Store
+Thumbs.db
+backend/spring-petclinic/
+backend/src/main/java/com/campusconnect/backend/resume.txt
